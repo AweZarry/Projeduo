@@ -1,0 +1,73 @@
+body {
+    background: linear-gradient(to bottom, black, red);
+    width: 100%;
+    margin: 0;
+}
+h1 {
+    padding: 0px;
+    font-size: 70px;
+    margin: 0;
+    box-shadow: solid, #000000, 1px;
+}
+
+h2 {
+    padding: 5px;
+    font-size: 40px;
+}
+
+h3 {
+    float: right;
+    font-size: 20px;
+    position: absolute; 
+    top: 200px;
+    right: 50px;
+}
+
+h4 {
+    float: right;
+    font-size: 20px;
+    position: absolute; 
+    top: 310px;
+    right: 598px;
+}
+
+h5{
+    float: right;
+    font-size: 20px;
+    position: absolute; 
+    top: 450px;
+    right: 50px;
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    left: 20px;
+}
+
+a {
+    color: rgb(70, 0, 0);
+    float: right;
+    position: relative;
+    top: 430px;
+    padding: 10px;
+    left: 20px;
+}
+
+
+.seta {
+    width: 25px;
+    float: right;
+    position: relative;
+    top: 430px;
+    padding: 10px;
+
+}
+
+.logo {
+    width: 250px;
+    float: right;
+    position: relative;
+    top: -240px;
+    padding: 0px;
+}

@@ -1,0 +1,225 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4e4e4e;
+}
+
+.painel {
+    display: flex;
+    position: relative;
+    top: 50px;
+    background-color: #565656;
+    height: 600px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.nav {
+    background-color: #191919;
+    height: 600px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.nav_canto_cima {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #fff;
+}
+
+.nav_canto_cima h4 {
+    margin: 0;
+    color: aliceblue;
+}
+
+.cimanav {
+    padding: 0;
+    list-style: none;
+}
+
+.cimanav li {
+    padding: 15px 0;
+}
+
+.cimanav li a {
+    color: azure;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    display: block;
+}
+
+.cimanav li a:hover {
+    color: rgb(158, 158, 158);
+    text-decoration: none;
+    border-bottom: 1px solid azure;
+    transition: 1s;
+}
+
+.nav_canto_baixo {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #fff;
+}
+
+.baixonav {
+    list-style: none;
+    padding: 0;
+}
+
+.baixonav li {
+    padding: 15px 0;
+}
+
+.baixonav li a {
+    color: azure;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    display: block;
+}
+
+.baixonav li a:hover {
+    color: rgb(158, 158, 158);
+    text-decoration: none;
+    border-bottom: 1px solid azure;
+    transition: 1s;
+}
+
+.Jogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.Jogo label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.Jogo input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#descricaos {
+    width: 233px;
+    height: 280px;
+    max-height: 290px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+    margin-bottom: 20px;
+    overflow-wrap: break-word;
+}
+
+.Jogo button {
+    background-color: #000000;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.Jogo button:hover {
+    background-color: #a04545;
+}
+
+#conteudo-editar {
+    display: block;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.fomz {
+    margin-top: 20px;
+}
+
+.fomz label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.fomz input[type="text"],
+.fomz textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.fomz button {
+    background-color: #008080;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.fomz button:hover {
+    background-color: #005555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.imgs {
+    width: 300px;
+    height: 168px;
+}
+
+.edit {
+    background-color: #008080;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+    text-decoration: none;
+}

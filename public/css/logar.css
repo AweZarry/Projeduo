@@ -1,0 +1,70 @@
+body {
+    background-image: linear-gradient(to right, #000000, #D21F1F, #FF2626);
+    font-family: 'Indie Flower', cursive;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+}
+
+.logar{
+    padding: 20px 30px;
+    width: 250px;
+    position: absolute;
+    top: 130px;
+    right: 100px;
+    background-image: linear-gradient(to right, #FF2626, #D21F1F, #000000);
+    border-radius: 30px;
+}
+
+.logar label {
+    color: darkred;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.logar input {
+    font-size: 16px;
+    padding: 13px 25px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #FF3636;;
+}
+
+.logar input[type="submit"]{
+    background-color: #FF3636;
+    color: black; 
+    border: none; 
+    padding: 10px 50px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: block; 
+    font-size: 16px;
+    cursor: pointer; 
+    border-radius: 13px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.logar a {
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: aliceblue;
+}
+
+.senha {
+    position: relative;
+    right: -50px;
+}
+
+.logar img {
+    position: relative;
+    right: -25px;
+}

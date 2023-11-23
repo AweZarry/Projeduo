@@ -1,0 +1,132 @@
+body {
+    font-family: 'Indie Flower', cursive;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #191919;
+    margin-top: 90px;
+}
+
+.nms {
+    text-align: center;
+    height: 100px;
+}
+
+.imgfundo {
+    background-image: url(../img/liii.jpg);
+}
+
+.comeco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.comeco .row {
+    background-color: #7e7e7e;
+    list-style-type: none;
+    font-size: 18px;
+    display: inline-flex;
+    width: 71.5%;
+}
+
+.comeco .col {
+    list-style-type: none;
+    font-size: 18px;
+    display: flex;
+    width: 100%;
+}
+
+.comeco .nav-com a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 8px 8px;
+    margin-left: 63px;
+    text-decoration: none;
+}
+
+
+#conteudo-tudo li,
+#conteudo-capturas li,
+#conteudo-dicas li,
+#conteudo-videos li {
+    background-color: #7e7e7e;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    list-style: none;
+    text-align: left;
+}
+
+#conteudo-tudo a,
+#conteudo-capturas a,
+#conteudo-dicas a,
+#conteudo-videos a {
+    display: block;
+    padding: 4px;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+#conteudo-tudo,
+#conteudo-capturas,
+#conteudo-videos,
+#conteudo-dicas {
+    background-color: #cecece;
+    padding: 10px;
+    width: 70%;
+}
+
+.lados {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contdic {
+    background-color: #191919;
+    padding: 10px;
+    max-width: 55%;
+    width: 55%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#adicional_dicas {
+    max-width: 35%;
+    width: 35%;
+    background-color: #191919;
+    padding: 10px;
+}
+
+.cont-dicas ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    width: 50%;
+    display: inline-flex;
+}
+
+#conteudo-tudo h4,
+#conteudo-capturas h4,
+#conteudo-dicas h4,
+#conteudo-videos h4 {
+    text-align: left;
+}
+
+#conteudo-tudo a:hover,
+#conteudo-capturas a:hover,
+#conteudo-dicas a:hover,
+#conteudo-videos a:hover,
+#conteudo-tudo a:active,
+#conteudo-videos a:active,
+#conteudo-dicas a:active,
+#conteudo-videos a:active {
+    background: linear-gradient(to right, #ff002b, #7e7e7e);
+    border-radius: 10px;
+}
