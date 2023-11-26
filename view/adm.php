@@ -99,7 +99,8 @@ include_once('../view/navbar.php');
                     <input type="file" name="foto_jogo" required>
                     <label for="descricao">Descrição</label>
                     <textarea id="descricaos" name="descricao" required></textarea>
-
+                    <label for="datas">Data de Lançamento</label>
+                    <input type="date" name="datas" required>
                     <input type="hidden" name="opcao" id="opcao" value="">
                     <button type="submit">Cadastrar</button>
 

@@ -16,6 +16,7 @@ class CrudNomes
     {
         $nome_jogo = $postValue['nome_jogo'];
         $descricao = $postValue['descricao'];
+        $datas = $postValue['datas'];
 
         if (isset($_FILES['foto_jogo'])) {
             $arquivo = $_FILES['foto_jogo'];
@@ -32,11 +33,12 @@ class CrudNomes
             $caminho_jogo = '';
         }
 
-        $query = "INSERT INTO nome (nome_jogo, foto_jogo, descricao) VALUES (?,?,?)";
+        $query = "INSERT INTO nome (nome_jogo, foto_jogo, descricao, datas) VALUES (?,?,?,?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $nome_jogo);
         $stmt->bindParam(2, $caminho_jogo);
         $stmt->bindParam(3, $descricao);
+        $stmt->bindParam(4, $datas);
 
         $rows = $this->read();
         if ($stmt->execute()) {

@@ -3,14 +3,12 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     background-color: #191919;
-    margin-top: 90px;
 }
 
-.nms {
-    text-align: center;
-    height: 100px;
+.grls {
+    position: relative;
+    top: 120px;
 }
 
 .imgfundo {
@@ -31,6 +29,9 @@ body {
     font-size: 18px;
     display: inline-flex;
     width: 71.5%;
+    margin-top: 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .comeco .col {
@@ -81,7 +82,8 @@ body {
     width: 70%;
 }
 
-.lados {
+
+.direselect {
     display: flex;
     justify-content: space-between;
 }
@@ -91,9 +93,6 @@ body {
     padding: 10px;
     max-width: 55%;
     width: 55%;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    margin-bottom: 20px;
 }
 
 #adicional_dicas {
@@ -129,4 +128,110 @@ body {
 #conteudo-videos a:active {
     background: linear-gradient(to right, #ff002b, #7e7e7e);
     border-radius: 10px;
+}
+
+.cnt-post {
+    display: flex;
+    justify-content: space-between;
+}
+
+.esquerdaimg img {
+    max-width: 400px;
+    width: 400px;
+    max-height: 250px;
+    height: 250px;
+    padding: 10px;
+    border: 1px solid black;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.direitatexto {
+    border: 1px solid black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 750px;
+}
+
+.direitatexto p,
+.direitatexto h2,
+.direitatexto h3 {
+    margin-left: 20px;
+}
+
+.lados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.capst {
+    display: flex;
+    height: 40px;
+}
+
+.exibir-container {
+    display: flex;
+    align-items: center;
+}
+
+.exibir-container p {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.opts {
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+}
+
+.duv {
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.duv:hover {
+    color: #7e7e7e;
+}
+
+.pesq {
+    margin-left: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.pesq {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.lpesq {
+    background-color: #424242;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4.7px;
+}
+
+.lpesq:hover {
+    background-color: #7f7f7f;
+}
+
+.rogs {
+    margin-top: 20px;
+    background-color: #424242;
+    width: 100%;
+    height: 40px;
 }

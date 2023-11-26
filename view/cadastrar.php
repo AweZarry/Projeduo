@@ -31,9 +31,6 @@ if (isset($_POST['cadastrar'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastar</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../public/css/cadastrar.css">
 </head>
 
@@ -61,6 +58,7 @@ if (isset($_POST['cadastrar'])) {
             <input type="submit" value="Cadastrar" name="cadastrar">
     </form>
     <a href="entrar.php"> Já tenho uma conta</a>
+    <a href="../public/index.php"> Voltar</a>
     </div>
 </body>
 

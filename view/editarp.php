@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+require_once('../action/Logcad.php');
+require_once('../database/Conexao.php');
+
+$database = new Conexao();
+$db = $database->getConnection();
+$projeto = new projeto($db);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +24,6 @@
 
 <body>
     <form method="post" action="">
-        <img src="../public/img/img2.png" alt="" class="fotin" width="651">
         <div class="cadast">
             <label for="arquivoInput" class="perfilfoto-label">
                 <input type="file" id="arquivoInput" class="perfilfoto" accept="image/*">
@@ -24,16 +34,8 @@
                 <label for="email" class="us">Email:</label>
             </div>
             <div class="cima">
-                <input type="text" name="nome" placeholder="Nome de usuário:" required>
-                <input type="email" name="email" placeholder="Email:" required>
-            </div>
-            <div class="baixo">
-                <label for="senha">Senha:</label>
-                <label for="confSenha">Confirmar Senha:</label>
-            </div>
-            <div class="baixo">
-                <input type="password" name="senha" placeholder="Senha nova:" required maxlength="8">
-                <input type="password" name="confSenha" placeholder="Confirme sua senha:" required maxlength="8">
+                <input type="text" name="nome" placeholder="Nome de usuário:" value="<?php echo $usuarioinf['nome_usuario']; ?>">
+                <input type="email" name="email" placeholder="Email:" value="<?php echo $usuarioinf['email_usuario']; ?>">
             </div>
             <input type="submit" value="Cadastrar" name="cadastrar">
     </form>

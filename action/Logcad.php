@@ -75,17 +75,16 @@ class projeto
 
     public function logar($login, $senha)
     {
-        $query = "SELECT * FROM usuario WHERE email_usuario = :email_usuario OR nome_usuario = :nome_usuario OR id_usuario = :id_usuario ";
+        $query = "SELECT * FROM usuario WHERE email_usuario = :email_usuario OR nome_usuario = :nome_usuario ";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':email_usuario', $login);
         $stmt->bindValue(':nome_usuario', $login);
-        $stmt->bindValue(':id_usuario', $login);
         $stmt->execute();
 
         if ($stmt->rowCount() == 1) {
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($senha, $usuario['senha_usuario'])) {
-                return true;
+                return $usuario['id_usuario'];
             }
         }
 
@@ -115,4 +114,23 @@ class projeto
         return false;
 
     }
+
+    public function ids($login)
+    {
+        $sql = "SELECT * FROM usuario WHERE email_usuario = :email_usuario OR nome_usuario = :nome_usuario ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":email_usuario", $login);
+        $stmt->bindValue(":nome_usuario", $login);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function pegarImagem($login){
+        $sql = "SELECT foto_usuario FROM usuario WHERE id_usuario = :id_usuario";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id_usuario", $login);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

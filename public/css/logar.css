@@ -1,11 +1,9 @@
 body {
-    background-image: linear-gradient(to right, #000000, #D21F1F, #FF2626);
-    font-family: 'Indie Flower', cursive;
     font-size: 16px;
     margin: 0;
     padding: 0;
     display: flex;
-
+    background-color: #4e4e4e;
 }
 
 .logar{
@@ -14,12 +12,12 @@ body {
     position: absolute;
     top: 130px;
     right: 100px;
-    background-image: linear-gradient(to right, #FF2626, #D21F1F, #000000);
+    background-color: #333;
     border-radius: 30px;
 }
 
 .logar label {
-    color: darkred;
+    color: black;
     display: block;
     font-size: 20px;
     margin-bottom: 10px;
@@ -33,11 +31,11 @@ body {
     border: none;
     border-radius: 20px;
     box-sizing: border-box;
-    background-color: #FF3636;;
+    background-color: #191919;
 }
 
 .logar input[type="submit"]{
-    background-color: #FF3636;
+    background-color: #191919;
     color: black; 
     border: none; 
     padding: 10px 50px; 

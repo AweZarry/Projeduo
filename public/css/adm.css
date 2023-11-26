@@ -116,9 +116,9 @@ html {
 }
 
 #descricaos {
-    width: 233px;
-    height: 280px;
-    max-height: 290px;
+    width: 350.4px;
+    height: 210px;
+    max-height: 210px;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -144,13 +144,13 @@ html {
 }
 
 #conteudo-editar {
-    display: block;
     padding: 20px;
     background-color: #fff;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    width: 1210px;
+    overflow-x: scroll;
     overflow-y: scroll;
 }
 

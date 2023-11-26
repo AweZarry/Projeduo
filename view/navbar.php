@@ -1,10 +1,16 @@
 <?php
 
+$marcola = $_SESSION['id_usuario'];
+
 $jogos = [];
 $dicas = [];
 $fotos = [];
 $videos = [];
 $usuarios = [];
+$marcos = [];
+
+$querymarcos = "SELECT * FROM usuario WHERE id_usuario = '$marcola' ";
+
 
 $queryu = "SELECT id_usuario, nome_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 8";
 $queryd = "SELECT titdicas, id_dicas, hora FROM dicas ORDER BY hora DESC LIMIT 6";
@@ -23,6 +29,7 @@ $resultd = $db->query($queryd);
 $resultf = $db->query($queryf);
 $resultv = $db->query($queryv);
 $resultu = $db->query($queryu);
+$resultm = $db->query($querymarcos);
 
 
 if ($resultu->rowCount() > 0) {
@@ -52,6 +59,12 @@ if ($resultf->rowCount() > 0) {
 if ($resultv->rowCount() > 0) {
     while ($row = $resultv->fetch(PDO::FETCH_ASSOC)) {
         $videos[] = $row;
+    }
+}
+
+if ($resultm->rowCount() > 0) {
+    while ($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
+        $marcos[] = $row;
     }
 }
 
@@ -127,10 +140,8 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
 
         .dropdown-content {
             display: none;
-            position: absolute;
             background-color: #333;
             min-width: 140px;
-            max-width: 140px;
             border: 1px solid #FFF;
             z-index: 1;
         }
@@ -163,10 +174,12 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
 
         .esquerda {
             float: left;
+            max-height: 66.56px;
         }
 
         .direita {
             float: right;
+            max-height: 66.56px;
         }
 
         .pesquisa-input {
@@ -189,6 +202,25 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
 
         .pesquisa-button:hover {
             background-color: #4e4e4e;
+        }
+
+        .imgs_user {
+            float: left;
+            width: 60px;
+            height: 60px;
+            border-radius: 90px;
+        }
+
+        .user_lad {
+            display: flex;
+            align-items: center;
+            position: relative;
+            bottom: 15px;
+        }
+        #lado_dir{
+            position: relative;
+            bottom: 5px;
+            width: 200px;
         }
     </style>
 </head>
@@ -225,14 +257,21 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
             <ul>
                 <?php if (isset($_SESSION['nome'])): ?>
                     <div class="dropdown">
-                        <span class="nav-link dropdown-toggle">Bem-vindo,
-                            <?php echo $_SESSION['nome']; ?>!
-                        </span>
-                        <div class="dropdown-content">
+                        <div class="user_lad">
+                            <span class="nav-link dropdown-toggle">Bem-vindo,
+                                <?php echo $_SESSION['nome']; ?>!
+                            </span>
+                            <?php if (isset($marcos[0]['foto_usuario'])): ?>
+                                <span>
+                                    <img src="<?php echo $marcos[0]['foto_usuario']; ?>" alt="" class="imgs_user">
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                        <div class="dropdown-content" id="lado_dir">
                             <?php if ($_SESSION['adm']): ?>
                                 <a class="dropdown-item" href="../view/adm.php">Painel ADM</a>
                             <?php endif; ?>
-                            <a class="dropdown-item" href="../view/editarp.php">Editar Perfil</a>
+                            <a class="dropdown-item" href="../view/editarp.php">Meu Perfil</a>
                             <a class="dropdown-item" href="../view/logout.php">Sair</a>
                         </div>
                     </div>

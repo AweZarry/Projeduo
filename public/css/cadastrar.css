@@ -1,6 +1,5 @@
 body {
-    background-image: linear-gradient(to right, #000000, #D21F1F, #FF2626);
-    font-family: 'Indie Flower', cursive;
+    background-color: #4e4e4e;
     font-size: 16px;
     margin: 0;
     padding: 0;
@@ -16,12 +15,12 @@ body {
     position: absolute;
     top: 90px;
     right: 30px;
-    background-image: linear-gradient(to right, #FF2626, #D21F1F, #000000);
+    background-color: #333;
     border-radius: 30px;
 }
 
 .cadast label {
-    color: rgb(255, 255, 255);
+    color: black;
     display: block;
     font-size: 20px;
     margin-bottom: 10px;
@@ -49,7 +48,7 @@ body {
     border: none;
     border-radius: 20px;
     box-sizing: border-box;
-    background-color: #FF3636;
+    background-color: #191919;
     margin-bottom: 40px;
     margin-left: 10px;
     margin-right: 10px;
@@ -67,7 +66,7 @@ body {
 
 
 .cadast input[type="submit"] {
-    background-color: #FF3636;
+    background-color: #191919;
     color: black;
     border: none;
     padding: 10px 80px;
