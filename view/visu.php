@@ -8,7 +8,6 @@ $database = new Conexao();
 $db = $database->getConnection();
 $projeto = new projeto($db);
 
-
 $teste = null;
 
 if (isset($_GET['id_jogo'])) {
@@ -148,36 +147,49 @@ include_once('../view/navbar.php');
                         </div>
                     </div>
                     <div id="categorias-dinamicas">
-                        <?php
-                        foreach ($dicasDoJogo as $dica): ?>
-                            <div class="dicaspost">
-                                <div class="posts">
-                                    <div class="infpostador">
-                                        <img src="<?php echo $dica['foto_postador']; ?>" alt="" class="imgpostador">
-                                        <p class="postadorname">
-                                            <?php echo $dica['postador']; ?>
-                                        </p>
-                                    </div>
-                                    <div class="cruddicas">
-                                        <?php if (isset($_SESSION['nome']) && $_SESSION['nome'] == $dica['postador']): ?>
-                                            <a href=""><img src="../public/img/delete.png" alt=""></a>
-                                            <a href=""><img src="../public/img/engrenagem.png" alt=""></a>
-                                        <?php else: ?>
-                                            <?php if ($_SESSION['adm']): ?>
-                                                <a href=""> <img src="../public/img/delete.png" alt=""></a>
+                        <div class="dicas-container">
+                            <?php
+                            foreach ($dicasDoJogo as $dica): ?>
+                                <div class="dicaspost">
+                                    <div class="posts">
+                                        <div class="infpostador">
+                                            <img src="<?php echo $dica['foto_postador']; ?>" alt="" class="imgpostador">
+                                            <p class="postadorname">
+                                                <?php echo $dica['postador']; ?>
+                                            </p>
+                                        </div>
+                                        <div class="cruddicas">
+                                            <?php if (isset($_SESSION['nome']) && $_SESSION['nome'] == $dica['postador']): ?>
+                                                <a href=""><img src="../public/img/delete.png" alt=""></a>
+                                                <a href=""><img src="../public/img/engrenagem.png" alt=""></a>
+                                            <?php else: ?>
+                                                <a href=""><img src="../public/img/semcurtir.png" alt=""></a>
+                                                <?php if (isset($_SESSION['nome']) && isset($_SESSION['adm']) && $_SESSION['adm']): ?>
+                                                    <a href=""> <img src="../public/img/delete.png" alt=""></a>
+                                                <?php else: ?>
+                                                    <a href=""> <img src="../public/img/comentar.png" alt=""></a>
+                                                <?php endif; ?>
                                             <?php endif; ?>
-                                            <a href=""> <img src="../public/img/comentar.png" alt=""></a>
-                                            <a href=""><img src="../public/img/semcurtir.png" alt=""></a>
-                                        <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="conteudo">
+                                        <div class="nome_dica">
+                                            <h3>
+                                                <?php echo $dica['titdicas']; ?>
+                                            </h3>
+                                            <h4>
+                                                <?php echo $dica['dicascat'] ?>
+                                            </h4>
+                                        </div>
+                                        <div class="assunto-dica">
+                                            <h4>
+                                                <?php echo $dica['titdicas']; ?>
+                                            </h4>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="nome_dica">
-                                    <h3>
-                                        <?php echo $dica['titdicas']; ?>
-                                    </h3>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
 
