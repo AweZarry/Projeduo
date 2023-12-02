@@ -1,10 +1,11 @@
 body {
-    font-family: 'Indie Flower', cursive;
     margin: 0;
     padding: 0;
     width: 100%;
     background-color: #191919;
 }
+
+/* Começo de tudo navs e centralização */
 
 .grls {
     position: relative;
@@ -50,29 +51,6 @@ body {
     text-decoration: none;
 }
 
-
-#conteudo-tudo li,
-#conteudo-capturas li,
-#conteudo-dicas li,
-#conteudo-videos li {
-    background-color: #7e7e7e;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    list-style: none;
-    text-align: left;
-}
-
-#conteudo-tudo a,
-#conteudo-capturas a,
-#conteudo-dicas a,
-#conteudo-videos a {
-    display: block;
-    padding: 4px;
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-}
-
 #conteudo-tudo,
 #conteudo-capturas,
 #conteudo-videos,
@@ -82,54 +60,10 @@ body {
     width: 70%;
 }
 
+/* Final dessa parte */
 
-.direselect {
-    display: flex;
-    justify-content: space-between;
-}
 
-.contdic {
-    background-color: #191919;
-    padding: 10px;
-    max-width: 55%;
-    width: 55%;
-}
-
-#adicional_dicas {
-    max-width: 35%;
-    width: 35%;
-    background-color: #191919;
-    padding: 10px;
-}
-
-.cont-dicas ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    width: 50%;
-    display: inline-flex;
-}
-
-#conteudo-tudo h4,
-#conteudo-capturas h4,
-#conteudo-dicas h4,
-#conteudo-videos h4 {
-    text-align: left;
-}
-
-#conteudo-tudo a:hover,
-#conteudo-capturas a:hover,
-#conteudo-dicas a:hover,
-#conteudo-videos a:hover,
-#conteudo-tudo a:active,
-#conteudo-videos a:active,
-#conteudo-dicas a:active,
-#conteudo-videos a:active {
-    background: linear-gradient(to right, #ff002b, #7e7e7e);
-    border-radius: 10px;
-}
-
+/*Parte do começo onde ta a img o nome jogo e a desc do jogo */
 .cnt-post {
     display: flex;
     justify-content: space-between;
@@ -159,79 +93,89 @@ body {
     margin-left: 20px;
 }
 
+
+/* Final da parte da desc do jogo da img e do nome jogo */
+
+/* Dicas css */
 .lados {
+    display: flex;
+    justify-content: space-between;
+}
+
+.baixo li {
+    display: none;
+}
+
+#mostrar-mais,
+#ocultar-mais {
+    display: block;
+    cursor: pointer;
+    color: blue;
+}
+
+.navsa {
+    display: flex;
+    flex-direction: column;
+}
+
+.cima {
+    display: flex;
+}
+
+.baixo {
+    display: flex;
+}
+
+
+
+
+/* posts do Dicas */
+
+.dicaspost {
+    width: 90%;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10 auto;
+}
+
+.posts {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.capst {
+.infpostador {
     display: flex;
-    height: 40px;
-}
-
-.exibir-container {
-    display: flex;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.exibir-container p {
+.cruddicas {
+    display: flex;
+    justify-content: ;
+    align-items: center;
+}
+
+.postadorname {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.imgpostador {
+    width: 55px;
+    height: 55px;
+    border-radius: 100px;
     margin-right: 10px;
-    font-size: 16px;
+    border: 1px solid black;
 }
 
-.opts {
-    padding: 8px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
+.cruddicas img {
+    width: 20px;
+    width: 20px;
+    margin-right: 10px;
 }
 
-.duv {
-    margin-left: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.duv:hover {
-    color: #7e7e7e;
-}
-
-.pesq {
-    margin-left: 10px;
-}
-
-.search-container {
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-}
-
-.pesq {
-    flex: 1;
-    padding: 8px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px 0 0 5px;
-}
-
-.lpesq {
-    background-color: #424242;
-    color: white;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 4.7px;
-}
-
-.lpesq:hover {
-    background-color: #7f7f7f;
-}
-
-.rogs {
-    margin-top: 20px;
-    background-color: #424242;
-    width: 100%;
-    height: 40px;
+.nome_dica {
+    
 }

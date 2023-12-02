@@ -1,0 +1,155 @@
+body {
+    background-color: #f2f2f2;
+    color: #333;
+    margin-top: 90px;
+}
+
+.navedit {
+    background-color: #c5c5c5;
+    max-width: 900px;
+    margin: 0px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.uledit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.liedit {
+    list-style: none;
+    padding: 10px;
+}
+
+.liedit a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.liedit a:first-child {
+    margin-left: 0;
+}
+
+.liedit a:hover {
+    color: #555;
+}
+
+
+.user-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c5c5c5;
+    border-radius: 7px;
+    text-align: center;
+    margin: 0px auto;
+    max-width: 900px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 100px;
+    font-size: 17px;
+}
+
+.user-details,
+.user_desc {
+    flex: 1;
+    text-align: center;
+}
+
+.user-details p,
+.user_desc p {
+    margin-bottom: 15px;
+}
+
+.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgs_users {
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+}
+
+.att_edit {
+    background-color: #7c7c7c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.att_edit:hover {
+    background-color: #5f5f5f;
+}
+
+
+/* edit */
+
+.user-panele {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c5c5c5;
+    border-radius: 7px;
+    text-align: center;
+    margin: 0px auto;
+    max-width: 900px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 100px;
+    font-size: 17px;
+}
+
+.user-detailse {
+    flex: 1;
+    text-align: center;
+}
+
+.user-detailse h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.fotoe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotoe img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+}
+
+.imgs_userse {
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+}
+
+.user-detailse p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+

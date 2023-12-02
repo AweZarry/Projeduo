@@ -1,22 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const arquivoInput = document.getElementById('arquivoInput');
-    const imagemSelecionada = document.getElementById('imagemSelecionada');
+function previewImage() {
+    var input = document.getElementById('foto');
+    var imgContainer = document.getElementById('fotoContainer');
+    var currentImage = imgContainer.querySelector('img');
 
-    arquivoInput.addEventListener('change', function () {
-        const arquivo = arquivoInput.files[0];
-        const leitor = new FileReader();
+    if (currentImage) {
+        imgContainer.removeChild(currentImage);
+    }
 
-        leitor.onload = function (e) {
-            imagemSelecionada.src = e.target.result;
-        };
+    var newImage = document.createElement('img');
+    newImage.src = URL.createObjectURL(input.files[0]);
 
-        if (arquivo) {
-            leitor.readAsDataURL(arquivo);
-        }
-    });
-});
+    input.style.display = 'none';
 
+    imgContainer.appendChild(newImage);
+}
 
+function selectImage() {
+    var input = document.getElementById('foto');
+    var imgContainer = document.getElementById('fotoContainer');
 
+    input.style.display = 'block';
 
-
+    var currentImage = imgContainer.querySelector('img');
+    if (currentImage) {
+        imgContainer.removeChild(currentImage);
+    }
+}

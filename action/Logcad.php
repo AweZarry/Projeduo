@@ -125,7 +125,8 @@ class projeto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function pegarImagem($login){
+    public function pegarImagem($login)
+    {
         $sql = "SELECT foto_usuario FROM usuario WHERE id_usuario = :id_usuario";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(":id_usuario", $login);
@@ -133,4 +134,63 @@ class projeto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    public function updatePerfil($data)
+    {
+        $id_usuario = $data['id_usuario'];
+        $nome = $data['nome'];
+        $email = $data['email'];
+        $biografia = $data['biografia'];
+
+        if (isset($_FILES['foto']) && $_FILES['foto']['size'] > 0) {
+            $arquivo = $_FILES['foto'];
+            $extensao = pathinfo($arquivo['name'], PATHINFO_EXTENSION);
+            $ex_permitidos = array('jpg', 'jpeg', 'png', 'gif', 'webp');
+
+            if (in_array(strtolower($extensao), $ex_permitidos)) {
+                $foto = '../public/img/' . $arquivo['name'];
+                move_uploaded_file($arquivo['tmp_name'], $foto);
+            } else {
+                die('Você não pode fazer upload desse tipo de arquivo');
+            }
+        } else {
+            $query = "SELECT foto_usuario FROM usuario WHERE id_usuario = :id_usuario";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":id_usuario", $id_usuario);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $foto = $result['foto_usuario'];
+        }
+
+        $query = "UPDATE usuario SET nome_usuario = :nome, email_usuario = :email, bio_usuario = :biografia, foto_usuario = :foto WHERE id_usuario = :id_usuario";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':biografia', $biografia);
+        $stmt->bindParam(':foto', $foto);
+        $stmt->bindParam(':id_usuario', $id_usuario);
+
+        if ($stmt->execute()) {
+            print "<script> alert('Usuario atualizado com sucesso!!!')</script>";
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete($id_usuario)
+    {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id_usuario = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $id_usuario);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
+
+

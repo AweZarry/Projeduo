@@ -1,35 +1,19 @@
 <?php
-
-$marcola = $_SESSION['id_usuario'];
-
 $jogos = [];
-$dicas = [];
-$fotos = [];
-$videos = [];
 $usuarios = [];
-$marcos = [];
-
-$querymarcos = "SELECT * FROM usuario WHERE id_usuario = '$marcola' ";
 
 
 $queryu = "SELECT id_usuario, nome_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 8";
-$queryd = "SELECT titdicas, id_dicas, hora FROM dicas ORDER BY hora DESC LIMIT 6";
-$queryf = "SELECT titcaptura, id_foto, hora FROM fotos ORDER BY hora DESC LIMIT 6";
-$queryv = "SELECT titvideo, id_video, hora FROM videos ORDER BY hora DESC LIMIT 6";
 $query = "SELECT n1.*, n1.foto_jogo
           FROM nome n1
           LEFT JOIN nome n2 
           ON n1.nome_jogo = n2.nome_jogo AND n1.id_jogo < n2.id_jogo
           WHERE n2.id_jogo IS NULL
           ORDER BY n1.id_jogo DESC
-          LIMIT 6";
+          LIMIT 8";
 
 $result = $db->query($query);
-$resultd = $db->query($queryd);
-$resultf = $db->query($queryf);
-$resultv = $db->query($queryv);
 $resultu = $db->query($queryu);
-$resultm = $db->query($querymarcos);
 
 
 if ($resultu->rowCount() > 0) {
@@ -44,40 +28,20 @@ if ($result->rowCount() > 0) {
     }
 }
 
-if ($resultd->rowCount() > 0) {
-    while ($row = $resultd->fetch(PDO::FETCH_ASSOC)) {
-        $dicas[] = $row;
-    }
-}
-
-if ($resultf->rowCount() > 0) {
-    while ($row = $resultf->fetch(PDO::FETCH_ASSOC)) {
-        $fotos[] = $row;
-    }
-}
-
-if ($resultv->rowCount() > 0) {
-    while ($row = $resultv->fetch(PDO::FETCH_ASSOC)) {
-        $videos[] = $row;
-    }
-}
-
-if ($resultm->rowCount() > 0) {
-    while ($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
-        $marcos[] = $row;
-    }
-}
 
 $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
 
 ?>
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Noto Sans JP', sans-serif;
         }
 
         .navbar {
@@ -141,7 +105,7 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
         .dropdown-content {
             display: none;
             background-color: #333;
-            min-width: 140px;
+            min-width: 100px;
             border: 1px solid #FFF;
             z-index: 1;
         }
@@ -182,28 +146,6 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
             max-height: 66.56px;
         }
 
-        .pesquisa-input {
-            padding: 5px;
-            width: 100px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .pesquisa-button {
-            padding: 5px;
-            font-size: 16px;
-            background-color: #191919;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .pesquisa-button:hover {
-            background-color: #4e4e4e;
-        }
-
         .imgs_user {
             float: left;
             width: 60px;
@@ -214,13 +156,10 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
         .user_lad {
             display: flex;
             align-items: center;
-            position: relative;
-            bottom: 15px;
         }
-        #lado_dir{
-            position: relative;
-            bottom: 5px;
-            width: 200px;
+
+        #lado_dir {
+            width: 160px;
         }
     </style>
 </head>
@@ -259,13 +198,8 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
                     <div class="dropdown">
                         <div class="user_lad">
                             <span class="nav-link dropdown-toggle">Bem-vindo,
-                                <?php echo $_SESSION['nome']; ?>!
+                                <?php echo $_SESSION['nome']; ?> !
                             </span>
-                            <?php if (isset($marcos[0]['foto_usuario'])): ?>
-                                <span>
-                                    <img src="<?php echo $marcos[0]['foto_usuario']; ?>" alt="" class="imgs_user">
-                                </span>
-                            <?php endif; ?>
                         </div>
                         <div class="dropdown-content" id="lado_dir">
                             <?php if ($_SESSION['adm']): ?>

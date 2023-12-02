@@ -8,6 +8,7 @@ $database = new Conexao();
 $db = $database->getConnection();
 $projeto = new projeto($db);
 
+
 $teste = null;
 
 if (isset($_GET['id_jogo'])) {
@@ -20,15 +21,21 @@ if (isset($_GET['id_jogo'])) {
 
     if ($stmt->rowCount() > 0) {
         $teste = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $sqlDicas = "SELECT * FROM dicas WHERE id_jogo = :id_jogo";
+        $stmtDicas = $db->prepare($sqlDicas);
+        $stmtDicas->bindParam(':id_jogo', $id_jogo);
+        $stmtDicas->execute();
+        $dicasDoJogo = $stmtDicas->fetchAll(PDO::FETCH_ASSOC);
     } else {
         echo "Jogo não encontrado.";
         exit();
     }
 }
 
-include_once('../view/navbar.php')
+include_once('../view/navbar.php');
 
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +45,6 @@ include_once('../view/navbar.php')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>visualização</title>
     <link rel="stylesheet" type="text/css" href="../public/css/thelost.css">
-
 </head>
 
 <body>
@@ -113,41 +119,65 @@ include_once('../view/navbar.php')
                 <div id="conteudo-dicas" class="cont-dicas" style="display: none;">
                     <div class="lados">
                         <div class="contdic">
-                            <h4>Dicas</h4>
-                            <ul>
-                                <li><a href="">Pupolares</a></li>
-                                <li><a href="">Secretos</a></li>
-                                <li><a href="">Conquistas</a></li>
-                                <li><a href="">Equipamentos</a></li>
-                                <li><a href="">Armas</a></li>
-                                <li><a href="">Dicas Basicas</a></li>
-                                <li><a href="">Mapas</a></li>
-                                <li><a href="">Modificações</a></li>
-                                <li><a href="">Historia</a></li>
-                                <li><a href="">Criação</a></li>
-                                <li><a href="">Classes</a></li>
-                            </ul>
-                            <li class="cnt-post"><a href="../view/thelost.php">Fable - The Lost Chapters</a></li>
-                            <li class="cnt-post"><a href="../view/ascr.php">Assassin'S Creed Rogue</a></li>
+                            <div class="navsa">
+                                <ul class="cima">
+                                    <li><a href="">Populares</a></li>
+                                    <li><a href="">Secretos</a></li>
+                                    <li><a href="">Conquistas</a></li>
+                                    <li><a href="">Equipamentos</a></li>
+                                    <li><a href="">Armas</a></li>
+                                </ul>
+                                <ul class="baixo">
+                                    <li><a href="">Dicas Básicas</a></li>
+                                    <li><a href="">Mapas</a></li>
+                                    <li><a href="">Modificações</a></li>
+                                    <li><a href="">História</a></li>
+                                    <li><a href="">Criação</a></li>
+                                    <li><a href="">Classes</a></li>
+                                </ul>
+                            </div>
+                            <div id="mostrar-mais">Mais</div>
+                            <div id="ocultar-mais" style="display: none;">Ocultar</div>
                         </div>
                         <div id="adicional_dicas">
-                            <h4>Dicas</h4>
-                            <div class="direselect">
-                                <div class="search-container">
-                                    <input type="search" class="pesq">
-                                    <p class="lpesq">🔎</p>
-                                </div>
-                            </div>
                             <?php if (isset($_SESSION['nome'])): ?>
-                                <li class=""><a class="nav-coms" href="#" id="adicionar">Compartilhar um Video</a></li>
+                                <li class=""><a class="nav-coms" href="#" id="adicionar">Compartilhar um Dica</a></li>
                             <?php else: ?>
                                 <li class=""><a href="../view/entrar.php">Logue Para Postar</a></li>
                             <?php endif; ?>
-                            <div class="dicas post">
-                                <li class="cnt-post"><a href="../view/thelost.php">Fable - The Lost Chapters</a></li>
-                                <li class="cnt-post"><a href="../view/ascr.php">Assassin'S Creed Rogue</a></li>
-                            </div>
                         </div>
+                    </div>
+                    <div id="categorias-dinamicas">
+                        <?php
+                        foreach ($dicasDoJogo as $dica): ?>
+                            <div class="dicaspost">
+                                <div class="posts">
+                                    <div class="infpostador">
+                                        <img src="<?php echo $dica['foto_postador']; ?>" alt="" class="imgpostador">
+                                        <p class="postadorname">
+                                            <?php echo $dica['postador']; ?>
+                                        </p>
+                                    </div>
+                                    <div class="cruddicas">
+                                        <?php if (isset($_SESSION['nome']) && $_SESSION['nome'] == $dica['postador']): ?>
+                                            <a href=""><img src="../public/img/delete.png" alt=""></a>
+                                            <a href=""><img src="../public/img/engrenagem.png" alt=""></a>
+                                        <?php else: ?>
+                                            <?php if ($_SESSION['adm']): ?>
+                                                <a href=""> <img src="../public/img/delete.png" alt=""></a>
+                                            <?php endif; ?>
+                                            <a href=""> <img src="../public/img/comentar.png" alt=""></a>
+                                            <a href=""><img src="../public/img/semcurtir.png" alt=""></a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <div class="nome_dica">
+                                    <h3>
+                                        <?php echo $dica['titdicas']; ?>
+                                    </h3>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
@@ -183,6 +213,9 @@ include_once('../view/navbar.php')
     </div>
 
     <script src="../public/js/thelost/fable.js"></script>
+    <script src="../public/js/thelost/dicasnav.js"></script>
+
+
 
 </body>
 

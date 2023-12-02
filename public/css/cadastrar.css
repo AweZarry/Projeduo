@@ -48,7 +48,7 @@ body {
     border: none;
     border-radius: 20px;
     box-sizing: border-box;
-    background-color: #191919;
+    background-color: #ffffff;
     margin-bottom: 40px;
     margin-left: 10px;
     margin-right: 10px;
@@ -67,7 +67,7 @@ body {
 
 .cadast input[type="submit"] {
     background-color: #191919;
-    color: black;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 10px 80px;
     text-align: center;

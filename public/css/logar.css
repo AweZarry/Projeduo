@@ -31,12 +31,12 @@ body {
     border: none;
     border-radius: 20px;
     box-sizing: border-box;
-    background-color: #191919;
+    background-color: #ffffff;
 }
 
 .logar input[type="submit"]{
     background-color: #191919;
-    color: black; 
+    color: aliceblue; 
     border: none; 
     padding: 10px 50px; 
     text-align: center; 

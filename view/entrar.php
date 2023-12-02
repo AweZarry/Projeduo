@@ -17,7 +17,6 @@ if (isset($_POST['logar'])) {
 
         if ($dados) {
             $_SESSION['id_usuario'] = $dados[0]['id_usuario'];
-            var_dump($dados);
         }
 
         if ($projeto->verificarAdm($login)) {

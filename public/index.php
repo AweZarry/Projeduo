@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+require_once('../action/Logcad.php');
 require_once('../action/Crud.php');
 require_once('../database/Conexao.php');
 
@@ -49,6 +50,19 @@ if (isset($_GET['action'])) {
     $foto = $crudFoto->readFoto();
 }
 
+$marcola = null;
+
+$marcola = $_SESSION['id_usuario'];
+
+$querymarcos = "SELECT * FROM usuario WHERE id_usuario = '$marcola' ";
+$resultm = $db->query($querymarcos);
+
+if ($resultm->rowCount() > 0) {
+    while ($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
+        $marcos[] = $row;
+    }
+}
+
 
 $jogos = [];
 $dicas = [];
@@ -57,9 +71,6 @@ $videos = [];
 $usuarios = [];
 
 $queryu = "SELECT id_usuario, nome_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 8";
-$queryd = "SELECT titdicas, id_dicas, hora FROM dicas ORDER BY hora DESC LIMIT 6";
-$queryf = "SELECT titcaptura, id_foto, hora FROM fotos ORDER BY hora DESC LIMIT 6";
-$queryv = "SELECT titvideo, id_video, hora FROM videos ORDER BY hora DESC LIMIT 6";
 $query = "SELECT n1.*, n1.foto_jogo, n1.descricao
           FROM nome n1
           LEFT JOIN nome n2 
@@ -69,9 +80,6 @@ $query = "SELECT n1.*, n1.foto_jogo, n1.descricao
           LIMIT 6";
 
 $result = $db->query($query);
-$resultd = $db->query($queryd);
-$resultf = $db->query($queryf);
-$resultv = $db->query($queryv);
 $resultu = $db->query($queryu);
 
 
@@ -87,21 +95,66 @@ if ($result->rowCount() > 0) {
     }
 }
 
-if ($resultd->rowCount() > 0) {
-    while ($row = $resultd->fetch(PDO::FETCH_ASSOC)) {
-        $dicas[] = $row;
+
+
+$queryRecentDicas = "SELECT * FROM dicas ORDER BY hora DESC LIMIT 8";
+$resultRecentDicas = $db->query($queryRecentDicas);
+$recentDicas = [];
+
+if ($resultRecentDicas->rowCount() > 0) {
+    while ($row = $resultRecentDicas->fetch(PDO::FETCH_ASSOC)) {
+        $recentDicas[] = $row;
     }
 }
 
-if ($resultf->rowCount() > 0) {
-    while ($row = $resultf->fetch(PDO::FETCH_ASSOC)) {
-        $fotos[] = $row;
+$queryRecentVideos = "SELECT * FROM videos ORDER BY hora DESC LIMIT 2";
+$resultRecentVideos = $db->query($queryRecentVideos);
+$recentVideos = [];
+
+if ($resultRecentVideos->rowCount() > 0) {
+    while ($row = $resultRecentVideos->fetch(PDO::FETCH_ASSOC)) {
+        $recentVideos[] = $row;
     }
 }
 
-if ($resultv->rowCount() > 0) {
-    while ($row = $resultv->fetch(PDO::FETCH_ASSOC)) {
-        $videos[] = $row;
+$queryRecentPhotos = "SELECT * FROM fotos ORDER BY hora DESC LIMIT 2";
+$resultRecentPhotos = $db->query($queryRecentPhotos);
+$recentPhotos = [];
+
+if ($resultRecentPhotos->rowCount() > 0) {
+    while ($row = $resultRecentPhotos->fetch(PDO::FETCH_ASSOC)) {
+        $recentPhotos[] = $row;
+    }
+}
+function gerarLinksClicaveisFotos($contentArray, $linkTemplate)
+{
+    foreach ($contentArray as $content) {
+        echo '<a href="' . sprintf($linkTemplate, $content['id_jogo']) . '">' . $content['titcaptura'] . '</a>';
+    }
+}
+
+function gerarLinksClicaveisDicas($contentArray, $linkTemplate)
+{
+    $contentArray = array_slice($contentArray, 0, 2);
+
+    foreach ($contentArray as $content) {
+        echo '<a href="' . sprintf($linkTemplate, $content['id_jogo']) . '">' . $content['titdicas'] . '</a>';
+    }
+}
+
+function gerarLinksClicaveisDicasPo($contentArray, $linkTemplate)
+{
+    $contentArray = array_slice($contentArray, 0, 8);
+
+    foreach ($contentArray as $content) {
+        echo '<a href="' . sprintf($linkTemplate, $content['id_jogo']) . '">' . $content['titdicas'] . '</a>';
+    }
+}
+
+function gerarLinksClicaveisVideos($contentArray, $linkTemplate)
+{
+    foreach ($contentArray as $content) {
+        echo '<a href="' . sprintf($linkTemplate, $content['id_jogo']) . '">' . $content['titvideo'] . '</a>';
     }
 }
 
@@ -109,7 +162,7 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
 
 include_once('../view/navbar.php')
 
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,6 +178,13 @@ include_once('../view/navbar.php')
 </head>
 
 <body>
+    <?php if (isset($_SESSION['nome'])): ?>
+        <?php
+        $nome = $marcos[0]['nome_usuario'];
+        $foto_usuario = $marcos[0]['foto_usuario'];
+        ?>
+    <?php endif; ?>
+
     <div class="container">
         <div class="cima">
             <div class="usuarios">
@@ -165,7 +225,8 @@ include_once('../view/navbar.php')
                                     data-index="<?php echo $index; ?>">
                                 <div class="slide">
                                     <div class="slide-content">
-                                        <a href="../view/visu.php?id_jogo=<?= $jogo["id_jogo"] ?>"><img src="<?php echo $jogo["foto_jogo"]; ?>"
+                                        <a href="../view/visu.php?id_jogo=<?= $jogo["id_jogo"] ?>"><img
+                                                src="<?php echo $jogo["foto_jogo"]; ?>"
                                                 alt="imagem <?php echo $index + 1; ?>"
                                                 data-index="<?php echo $index; ?>" /></a>
                                         <div class="nome-jogo">
@@ -206,8 +267,6 @@ include_once('../view/navbar.php')
     echo 'const totalJogos = ' . count($jogos) . ';';
     echo '</script>';
     ?>
-
-    <!-- Parte de img rodando e novos usuarios -->
     <div class="comunidade-container">
         <div class="comunidade">
             <div class="topicos">
@@ -223,45 +282,16 @@ include_once('../view/navbar.php')
                 </ul>
             </div>
             <div id="conteudo-posts" style="display: block;">
-                <?php
-                $todosItens = array_merge($fotos, $dicas, $videos);
+                <p>Dicas Recentes</p>
+                <?php gerarLinksClicaveisDicas($recentDicas, '../view/visu.php?id_jogo=%d'); ?>
 
-                usort($todosItens, function ($a, $b) {
-                    $dataA = strtotime($a['hora']);
-                    $dataB = strtotime($b['hora']);
+                <p>Videos Recentes</p>
+                <?php gerarLinksClicaveisVideos($recentVideos, '../view/visu.php?id_jogo=%d'); ?>
 
-                    if ($dataA != $dataB) {
-                        return $dataB - $dataA;
-                    }
-
-                    if (isset($b['id_video']) && isset($a['id_video'])) {
-                        return $b['id_video'] - $a['id_video'];
-                    } elseif (isset($b['id_foto']) && isset($a['id_foto'])) {
-                        return $b['id_foto'] - $a['id_foto'];
-                    } elseif (isset($b['id_dicas']) && isset($a['id_dicas'])) {
-                        return $b['id_dicas'] - $a['id_dicas'];
-                    }
-
-                    return 0;
-                });
-
-                $Itens = array_slice($todosItens, 0, 6);
-
-                foreach ($Itens as $item): ?>
-                    <a href="../view/visu.php?id_jogo=<?= $jogo["id_jogo"] ?>">
-                        <?php
-                        if (isset($item["titcaptura"])) {
-                            echo $item["titcaptura"];
-                        } elseif (isset($item["titdicas"])) {
-                            echo $item["titdicas"];
-                        } elseif (isset($item["titvideo"])) {
-                            echo $item["titvideo"];
-                        }
-
-                        ?>
-                    </a>
-                <?php endforeach; ?>
+                <p>Fotos Recentes</p>
+                <?php gerarLinksClicaveisFotos($recentPhotos, '../view/visu.php?id_jogo=%d'); ?>
             </div>
+
 
             <div id="conteudo-topicos" style="display: none;">
                 <?php
@@ -280,22 +310,15 @@ include_once('../view/navbar.php')
             </div>
 
             <div id="conteudo-dicas" style="display: none;">
-                <?php
-
-                usort($dicas, function ($a, $b) {
-                    return $b['id_dicas'] - $a['id_dicas'];
-                });
-
-                $Dicas = array_slice($dicas, 0, 6);
-
-                foreach ($Dicas as $dica): ?>
-                    <a href="../view/visu.php?id_jogo=<?= $jogo["id_jogo"] ?>">
-                        <?php echo $dica["titdicas"]; ?>
-                    </a>
-                <?php endforeach; ?>
+                <?php gerarLinksClicaveisDicasPo($recentDicas, '../view/visu.php?id_jogo=%d'); ?>
             </div>
+
             <div id="conteudo-adicionar" style="display: none;">
                 <form class="adc_ps" method="POST" action="?action=create" enctype="multipart/form-data">
+                    <?php if (isset($_SESSION['nome'])): ?>
+                        <input type="hidden" value="<?php echo $nome ?>" name="postador" id="postador">
+                        <input type="hidden" value="<?php echo $foto_usuario ?>" name="foto_postador" id="foto_postador">
+                    <?php endif; ?>
                     <div class="esquerdaadc">
                         <div class="adc_nome">
                             <label for="nome_jogo">Nome do Jogo</label>
@@ -372,6 +395,7 @@ include_once('../view/navbar.php')
     <script src="../public/js/telap/imgsjogos.js"></script>
     <script src="../public/js/telap/comuni.js"></script>
     <script src="../public/js/telap/select.js"></script>
+    <script src="../public/js/telap/view.js"></script>
 </body>
 
 </html>

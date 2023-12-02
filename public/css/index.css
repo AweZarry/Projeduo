@@ -289,9 +289,8 @@ input[type="radio"]:checked+.slide {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     max-height: 350px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    margin: 0px auto;
+    overflow-y: auto;
 }
 
 #conteudo-posts a,
@@ -305,7 +304,30 @@ input[type="radio"]:checked+.slide {
     display: block;
     text-align: center;
     transition: background-color 3s, color 0.3s;
+    max-width: calc(100% - 10px);
 }
+#conteudo-topicos a {
+    margin-bottom: 15px;
+}
+
+#conteudo-dicas a {
+    margin-bottom: 15px;
+}
+
+#conteudo-posts p,
+#conteudo-topicos p,
+#conteudo-dicas p {
+    color: aliceblue;
+    list-style: none;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    transition: background-color 3s, color 0.3s;
+    max-width: calc(100% - 10px);
+}
+
 
 #conteudo-posts a:hover,
 #conteudo-topicos a:hover,

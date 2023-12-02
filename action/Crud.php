@@ -1,7 +1,4 @@
 <?php
-include('../database/Conexao.php');
-
-$db = new Conexao();
 
 class CrudNomes
 {
@@ -134,14 +131,18 @@ class CrudDicas
         $titdicas = $postValue['titdicas'];
         $dicascat = $postValue['dicascat'];
         $dicainput = $postValue['dicainput'];
+        $postador = $postValue['postador'];
+        $foto_postador = $postValue['foto_postador'];
 
-        $query = "INSERT INTO dicas (id_jogo, titdicas, dicascat, dicasinput) VALUES (?,?,?,?)";
+        $query = "INSERT INTO dicas (id_jogo, titdicas, dicascat, dicasinput, postador, foto_postador) VALUES (?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(1, $id_jogo);
         $stmt->bindParam(2, $titdicas);
         $stmt->bindParam(3, $dicascat);
         $stmt->bindParam(4, $dicainput);
+        $stmt->bindParam(5, $postador);
+        $stmt->bindParam(6, $foto_postador);
 
         $dica = $this->readDicas();
         if ($stmt->execute()) {
@@ -176,6 +177,8 @@ class CrudVideo
         $nome_jogo = $postValue['nome_jogo'];
         $id_jogo = ($nome_jogo);
         $titvideo = $postValue['titvideo'];
+        $postador = $postValue['postador'];
+        $foto_postador = $postValue['foto_postador'];
 
         if (isset($_FILES['videos'])) {
             $arquivo = $_FILES['videos'];
@@ -192,11 +195,13 @@ class CrudVideo
             $caminho_video = ''; // Se nenhum arquivo foi enviado, defina o caminho como vazio
         }
 
-        $query = "INSERT INTO videos (id_jogo, titvideo, videos) VALUES (?,?,?)";
+        $query = "INSERT INTO videos (id_jogo, titvideo, videos, postador, foto_postador) VALUES (?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $id_jogo);
         $stmt->bindParam(2, $titvideo);
         $stmt->bindParam(3, $caminho_video);
+        $stmt->bindParam(4, $postador);
+        $stmt->bindParam(5, $foto_postador);
 
         $video = $this->readVideo();
         if ($stmt->execute()) {
@@ -233,6 +238,8 @@ class CrudFoto
         $nome_jogo = $postValue['nome_jogo'];
         $id_jogo = ($nome_jogo);
         $titcaptura = $postValue['titcaptura'];
+        $postador = $postValue['postador'];
+        $foto_postador = $postValue['foto_postador'];
 
         if (isset($_FILES['captura'])) {
             $arquivo = $_FILES['captura'];
@@ -246,14 +253,16 @@ class CrudFoto
                 die('Você não pode fazer upload desse tipo de arquivo');
             }
         } else {
-            $caminho_foto = ''; // Se nenhum arquivo foi enviado, defina o caminho como vazio
+            $caminho_foto = '';
         }
 
-        $query = "INSERT INTO fotos (id_jogo, titcaptura, captura) VALUES (?,?,?)";
+        $query = "INSERT INTO fotos (id_jogo, titcaptura, captura, postador, foto_postador) VALUES (?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $id_jogo);
         $stmt->bindParam(2, $titcaptura);
         $stmt->bindParam(3, $caminho_foto);
+        $stmt->bindParam(4, $postador);
+        $stmt->bindParam(5, $foto_postador);
 
         $foto = $this->readFoto();
         if ($stmt->execute()) {
