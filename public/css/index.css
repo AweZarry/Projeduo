@@ -1,7 +1,7 @@
 body,
 html {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     align-items: center;
     background-color: #4e4e4e;
@@ -217,9 +217,12 @@ input[type="radio"]:checked+.slide {
 
 .comunidade-container {
     width: 1478px;
-    margin-top: 40px;
     height: 450;
+    margin: 0 auto;
+}
 
+.comunidade-container {
+    margin-top: 40px;
 }
 
 .comunidade {
@@ -306,6 +309,7 @@ input[type="radio"]:checked+.slide {
     transition: background-color 3s, color 0.3s;
     max-width: calc(100% - 10px);
 }
+
 #conteudo-topicos a {
     margin-bottom: 15px;
 }

@@ -57,7 +57,7 @@ body {
     background-color: #cecece;
     padding: 10px;
     width: 70%;
-    margin-top: 10px;
+    margin: 0 auto;
     margin-bottom: 10px;
     border-radius: 10px;
 }
@@ -98,19 +98,20 @@ body {
 
 /* Final da parte da desc do jogo da img e do nome jogo */
 
-/* Dicas css */
+/*nav dos posts*/
 .lados {
     display: flex;
     justify-content: space-between;
-    background-color: #333;
-    padding: 10px;
     align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .navsa {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 .contdic {
@@ -153,23 +154,16 @@ body {
     text-decoration: none;
     color: #fff;
     padding: 10px;
-    border: 1px solid #fff;
+    background-color: #3e3e3e;
+    border: 1px solid #000000;
     border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.9s, color 0.9s;
 }
 
 .cima li a:hover,
 .baixo li a:hover {
-    background-color: #fff;
+    background-color: #888888;
     color: #333;
-}
-
-#mostrar-mais,
-#ocultar-mais {
-    display: block;
-    cursor: pointer;
-    color: blue;
-    margin-top: 10px;
 }
 
 #adicional_dicas {
@@ -180,27 +174,116 @@ body {
     text-decoration: none;
     color: #fff;
     padding: 5px;
-    border: 1px solid #fff;
+    background-color: #3e3e3e;
     border-radius: 5px;
+    transition: background-color 0.9s, color 0.9s;
 }
 
 #adicional_dicas a:hover {
+    background-color: #888888;
+    color: #333;
+}
+
+#mostrar-mais,
+#ocultar-mais {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    background-color: #333;
+    padding: 3px 8px;
+    margin-top: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    transition: background-color 0.9s, color 0.9s;
+}
+
+#ocultar-mais {
+    display: none;
+}
+
+#mostrar-mais:hover,
+#ocultar-mais:hover {
     background-color: #fff;
     color: #333;
 }
 
 
+.direselect {
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.capst {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exibir-container {
+    display: flex;
+    align-items: center;
+}
+
+.exibir-container p {
+    margin: 0;
+    padding: 10px;
+}
+
+.opts {
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.duv {
+    font-size: 14px;
+    color: #888;
+    margin-left: 5px;
+}
+
+.significa_p {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.duv:hover .tooltip {
+    display: block;
+}
+
+.nav-coms {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.nav-coms:hover {
+    text-decoration: underline;
+    color: #1e70bf;
+}
 
 
-/* posts do Dicas */
+/* posts */
 
-.dicas-container {
+.dicas-container,
+.cap-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.dicaspost {
+.dicaspost,
+.cappost {
     width: 90%;
     background-color: #333;
     border-radius: 10px;
@@ -221,7 +304,8 @@ body {
     align-items: center;
 }
 
-.cruddicas {
+.cruddicas,
+.crudcaptura {
     display: flex;
     justify-content: ;
     align-items: center;
@@ -240,13 +324,21 @@ body {
     border: 1px solid black;
 }
 
-.cruddicas img {
+.cruddicas img,
+.crudcaptura img {
     width: 20px;
     width: 20px;
     margin-right: 10px;
 }
 
 .conteudo {
+    background-color: #7e7e7e;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.conteudo-foto {
+    height: 220px;
     background-color: #7e7e7e;
     margin-top: 10px;
     border-radius: 10px;
@@ -274,4 +366,107 @@ body {
     border-radius: 10px;
     align-items: center;
     margin-bottom: 10px;
+}
+
+.assunto-captura {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.assunto-captura img {
+    width: 280px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+/* telas de registro */
+
+#adicional_dicas a.nav-coms,
+#adicional_foto a.nav-coms {
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.9s, color 0.9s;
+}
+
+#adicional_dicas a.nav-coms:hover,
+#adicional_foto a.nav-coms:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+#modal-dica,
+#modal-foto {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#fechar-modal-dica,
+#fechar-modal-foto {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#modal-dica h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.adc_nome h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.catsubjg labeL {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.catsubjg select,
+.titassuntos input[type="text"],
+.titassuntos textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.textadc {
+    resize: vertical;
+}
+
+#modal-dica {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

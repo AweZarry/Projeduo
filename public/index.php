@@ -7,7 +7,6 @@ require_once('../database/Conexao.php');
 
 $database = new Conexao();
 $db = $database->getConnection();
-$CrudNomes = new CrudNomes($db);
 $crudDicas = new CrudDicas($db);
 $crudVideo = new CrudVideo($db);
 $crudFoto = new CrudFoto($db);
@@ -49,20 +48,6 @@ if (isset($_GET['action'])) {
     $video = $crudVideo->readVideo();
     $foto = $crudFoto->readFoto();
 }
-
-$marcola = null;
-
-$marcola = $_SESSION['id_usuario'];
-
-$querymarcos = "SELECT * FROM usuario WHERE id_usuario = '$marcola' ";
-$resultm = $db->query($querymarcos);
-
-if ($resultm->rowCount() > 0) {
-    while ($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
-        $marcos[] = $row;
-    }
-}
-
 
 $jogos = [];
 $dicas = [];
@@ -180,6 +165,21 @@ include_once('../view/navbar.php')
 <body>
     <?php if (isset($_SESSION['nome'])): ?>
         <?php
+        $marcos = [];
+
+        $marcola = null;
+
+        $marcola = $_SESSION['id_usuario'];
+
+        $querymarcos = "SELECT * FROM usuario WHERE id_usuario = '$marcola' ";
+        $resultm = $db->query($querymarcos);
+
+        if ($resultm->rowCount() > 0) {
+            while ($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
+                $marcos[] = $row;
+            }
+        }
+
         $nome = $marcos[0]['nome_usuario'];
         $foto_usuario = $marcos[0]['foto_usuario'];
         ?>
@@ -315,10 +315,8 @@ include_once('../view/navbar.php')
 
             <div id="conteudo-adicionar" style="display: none;">
                 <form class="adc_ps" method="POST" action="?action=create" enctype="multipart/form-data">
-                    <?php if (isset($_SESSION['nome'])): ?>
                         <input type="hidden" value="<?php echo $nome ?>" name="postador" id="postador">
                         <input type="hidden" value="<?php echo $foto_usuario ?>" name="foto_postador" id="foto_postador">
-                    <?php endif; ?>
                     <div class="esquerdaadc">
                         <div class="adc_nome">
                             <label for="nome_jogo">Nome do Jogo</label>
@@ -385,7 +383,7 @@ include_once('../view/navbar.php')
                     </div>
 
                     <input type="hidden" name="opcao" id="opcao" value="">
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit">Enviar</button>
 
                 </form>
             </div>

@@ -3,6 +3,7 @@ $jogos = [];
 $usuarios = [];
 
 
+
 $queryu = "SELECT id_usuario, nome_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 8";
 $query = "SELECT n1.*, n1.foto_jogo
           FROM nome n1
@@ -112,7 +113,8 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
 
         #drop {
             position: absolute;
-            top: -10px;
+            top: -8px;
+            width: 220px;
         }
 
         span.nav-link.dropdown-toggle {
@@ -195,10 +197,26 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
         <div class="direita">
             <ul>
                 <?php if (isset($_SESSION['nome'])): ?>
+                    <?php
+                    $marcos = [];
+
+                    $marcola = null;
+
+                    $marcola = $_SESSION['id_usuario'];
+
+                    $querymarcos = "SELECT * FROM usuario WHERE id_usuario = '$marcola' ";
+                    $resultm = $db->query($querymarcos);
+
+                    if ($resultm->rowCount() > 0) {
+                        while ($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
+                            $marcos[] = $row;
+                        }
+                    }
+                    ?>
                     <div class="dropdown">
                         <div class="user_lad">
                             <span class="nav-link dropdown-toggle">Bem-vindo,
-                                <?php echo $_SESSION['nome']; ?> !
+                                <?php echo $marcos[0]['nome_usuario']; ?> !
                             </span>
                         </div>
                         <div class="dropdown-content" id="lado_dir">
