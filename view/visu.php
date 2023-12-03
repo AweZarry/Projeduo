@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cadastrar_captura']))
         $Fotoenviar->bindParam(5, $foto_postador);
 
         if ($Fotoenviar->execute()) {
-            echo "Foto cadastrada com sucesso!";
+            print "<script> alert('Foto enviada com sucesso!!! ')</script>";
         } else {
             echo "Erro ao cadastrar a Foto: " . $Fotoenviar->errorInfo()[2];
         }
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cadastrar_video'])) {
         $Videoenviar->bindParam(5, $foto_postador);
 
         if ($Videoenviar->execute()) {
-            echo "Dica cadastrada com sucesso!";
+            print "<script> alert('Video enviado com sucesso!!! ')</script>";
         } else {
             echo "Erro ao cadastrar a dica: " . $Videoenviar->errorInfo()[2];
         }
@@ -214,7 +214,15 @@ include_once('../view/navbar.php');
                                         <option value="">Mais Populares (Semana)</option>
                                         <option value="">Mais Antigas</option>
                                     </select>
-                                    <p class="duv">(?)</p>
+                                    <div class="duv">
+                                        <p class="">(?)
+                                        <div class="tooltip">
+                                            <span>O que significa popular?</span>
+                                            <span>Significa que o conteúdo que você está vendo recebeu mais avaliações
+                                                positivas que negativas no período de tempo escolhido.</span>
+                                        </div>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div id="adicional_foto">
@@ -361,14 +369,24 @@ include_once('../view/navbar.php');
                                 <option value="">Mais Populares (Semana)</option>
                                 <option value="">Mais Antigas</option>
                             </select>
-                            <p class="duv">(?)</p>
+                            <div class="duv">
+                                <p class="">(?)
+                                <div class="tooltip">
+                                    <span>O que significa popular?</span>
+                                    <span>Significa que o conteúdo que você está vendo recebeu mais avaliações
+                                        positivas que negativas no período de tempo escolhido.</span>
+                                </div>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <?php if (isset($_SESSION['nome'])): ?>
-                        <li class=""><a class="nav-coms" href="#" id="adicionarvideo">Compartilhar um Video</a></li>
-                    <?php else: ?>
-                        <li class=""><a href="../view/entrar.php">Logue Para Postar</a></li>
-                    <?php endif; ?>
+                    <div id="adicional_video">
+                        <?php if (isset($_SESSION['nome'])): ?>
+                            <li class=""><a class="nav-coms" href="#" id="adicionarvideo">Compartilhar um Video</a></li>
+                        <?php else: ?>
+                            <li class=""><a href="../view/entrar.php">Logue Para Postar</a></li>
+                        <?php endif; ?>
+                    </div>
                 </div>
                 <div id="dicas-cat-post">
                     <div class="dicas-container">
@@ -456,7 +474,7 @@ include_once('../view/navbar.php');
 
     <div id="modal-foto">
         <span id="fechar-modal-foto">&times;</span>
-        <h1>Compartilhar uma Dica</h1>
+        <h1>Compartilhar uma Captura</h1>
         <form class="adc_ps" method="POST" action="" id="form-foto">
             <input type="hidden" value="<?php echo $nome ?>" name="postador" id="postador">
             <input type="hidden" value="<?php echo $foto_usuario ?>" name="foto_postador" id="foto_postador">
@@ -466,13 +484,35 @@ include_once('../view/navbar.php');
                 </h3>
                 <input type="hidden" value="<?php echo $teste['id_jogo']; ?>" name="id_jogo" id="id_jogo">
             </div>
-            <div class="capjg" id="captura" style="display: none;">
+            <div class="capjg" id="captura">
                 <label for="titcaptura">Titulo</label>
                 <input type="text" name="titcaptura">
                 <label for="captura">Capturas de tela</label>
                 <input type="file" name="captura">
             </div>
             <button type="submit" name="cadastrar_foto">Enviar Captura</button>
+        </form>
+    </div>
+
+    <div id="modal-video">
+        <span id="fechar-modal-video">&times;</span>
+        <h1>Compartilhar um Video</h1>
+        <form class="adc_ps" method="POST" action="" id="form-video">
+            <input type="hidden" value="<?php echo $nome ?>" name="postador" id="postador">
+            <input type="hidden" value="<?php echo $foto_usuario ?>" name="foto_postador" id="foto_postador">
+            <div class="adc_nome">
+                <h3>
+                    <?php echo $teste['nome_jogo']; ?>
+                </h3>
+                <input type="hidden" value="<?php echo $teste['id_jogo']; ?>" name="id_jogo" id="id_jogo">
+            </div>
+            <div class="vidjg" id="videos">
+                <label for="titvideo">Titulo</label>
+                <input type="text" name="titvideo">
+                <label for="videos">Vídeos</label>
+                <input type="file" name="videos">
+            </div>
+            <button type="submit" name="cadastrar_foto">Enviar Video</button>
         </form>
     </div>
 

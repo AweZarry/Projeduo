@@ -195,7 +195,7 @@ include_once('../view/navbar.php')
                     <div class="nomeusuario">
                         <li><a href="">Nome do Usuário:</a></li>
                         <div class="azin">
-                            <?php foreach ($usuarios as $usuario): ?>
+                        <?php foreach (array_slice($usuarios, 0, 6) as $usuario): ?>
                                 <p>
                                     <?php echo $usuario["nome_usuario"]; ?>
                                 </p>
@@ -205,7 +205,7 @@ include_once('../view/navbar.php')
                     <div class="numerousuario">
                         <li><a href="">Chegou em:</a></li>
                         <div class="azin">
-                            <?php foreach ($usuarios as $usuario): ?>
+                        <?php foreach (array_slice($usuarios, 0, 6) as $usuario): ?>
                                 <p>
                                     <?php echo $usuario["id_usuario"]; ?>
                                 </p>

@@ -166,11 +166,15 @@ body {
     color: #333;
 }
 
-#adicional_dicas {
+#adicional_dicas,
+#adicional_foto,
+#adicional_video {
     margin-top: 10px;
 }
 
-#adicional_dicas a {
+#adicional_dicas a,
+#adicional_foto a,
+#adicional_video a {
     text-decoration: none;
     color: #fff;
     padding: 5px;
@@ -241,13 +245,13 @@ body {
     border-radius: 5px;
 }
 
-.duv {
+.duv p {
     font-size: 14px;
     color: #888;
     margin-left: 5px;
 }
 
-.significa_p {
+.tooltip {
     display: none;
     position: absolute;
     background-color: #fff;
@@ -307,7 +311,6 @@ body {
 .cruddicas,
 .crudcaptura {
     display: flex;
-    justify-content: ;
     align-items: center;
 }
 
@@ -388,7 +391,8 @@ body {
 /* telas de registro */
 
 #adicional_dicas a.nav-coms,
-#adicional_foto a.nav-coms {
+#adicional_foto a.nav-coms,
+#adicional_video a.nav-coms {
     text-decoration: none;
     background-color: #333;
     color: #fff;
@@ -398,13 +402,15 @@ body {
 }
 
 #adicional_dicas a.nav-coms:hover,
-#adicional_foto a.nav-coms:hover {
+#adicional_foto a.nav-coms:hover,
+#adicional_video a.nav-coms:hover {
     background-color: #fff;
     color: #333;
 }
 
 #modal-dica,
-#modal-foto {
+#modal-foto,
+#modal-video {
     display: none;
     position: fixed;
     top: 50%;
@@ -418,7 +424,8 @@ body {
 }
 
 #fechar-modal-dica,
-#fechar-modal-foto {
+#fechar-modal-foto,
+#fechar-modar-video {
     position: absolute;
     top: 10px;
     right: 10px;

@@ -41,6 +41,7 @@ class projeto
 
             $rows = $this->read();
             if ($stmt->execute()) {
+                print "<script> alert('Dica enviada com sucesso!!! ')</script>";
                 return true;
             } else {
                 return false;
