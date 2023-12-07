@@ -60,12 +60,6 @@ body {
     margin: 0 auto;
     margin-bottom: 10px;
     border-radius: 10px;
-    position: relative;
-}
-
-#conteudo-dicas {
-    overflow-y: scroll;
-    max-height: 600px;
 }
 
 /* Final dessa parte */
@@ -404,7 +398,8 @@ body {
     text-align: center;
 }
 
-.formdovideo form .formdodica form,
+.formdovideo form
+.formdodica form,
 .formdocaptura form {
     display: inline-block;
 }
@@ -414,10 +409,8 @@ body {
 .formdocaptura button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #c6c6c6;
-    /* Cor de fundo verde, pode ser alterada */
-    color: #fff;
-    /* Cor do texto branco, pode ser alterada */
+    background-color: #c6c6c6; /* Cor de fundo verde, pode ser alterada */
+    color: #fff; /* Cor do texto branco, pode ser alterada */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -426,12 +419,7 @@ body {
 .formdovideo button:hover,
 .formdodica button:hover,
 .formdocaptura button:hover {
-    background-color: #3d3d3d;
-    /* Cor de fundo verde escuro no hover, pode ser alterada */
-}
-
-.assunto_video iframe {
-    border-radius: 10px;
+    background-color: #3d3d3d; /* Cor de fundo verde escuro no hover, pode ser alterada */
 }
 
 
@@ -516,162 +504,40 @@ body {
     animation: fadeIn 0.5s ease-out;
 }
 
-
-
-.modal-assunto-dica,
-.modal_edit {
+#modal-assunto-dica {
     display: none;
     position: fixed;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    z-index: 1;
-    max-width: 800px;
-    width: 100%;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    border: 1px solid red;
+    z-index: 1000;
 }
 
-#fechar-modal-assunto-dica,
-.close_edit {
+#modal-assunto-dica h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#modal-assunto-dica p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+#modal-assunto-dica span {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    color: #888;
-}
-
-.modal-assunto-dica>div>div:first-child,
-.modal_edit>div>div:first-child {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.modal-assunto-dica #imgpostador {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.modal-assunto-dica #postador-name {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-/* Estilo dos ícones de ação */
-.modal-assunto-dica>div>div:first-child>div:last-child>a .modal-editar-dica>div>div:first-child>div:last-child>a {
-    margin-right: 10px;
-}
-
-/* Estilo do conteúdo da dica */
-.modal-assunto-dica #titdicas .modal-editar-dica #titdicas {
     font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.modal-assunto-dica #dicascat,
-.modal_edit #dicascat {
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.lados-assunto-dicas {
-    display: flex;
-    justify-content: space-between;
-}
-
-.conteudo-assunto-dica {
-    background-color: #7e7e7e;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.infpostador_assunto_dica {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.img_assunto_dica {
-    display: flex;
-}
-
-.img_assunto_dica img {
-    width: 35px;
-    margin-right: 10px;
-}
-
-.texto_dica_assunto {
-    width: 700px;
-    overflow-wrap: break-word;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-}
-
-
-#modal-assunto-dica-content {
-    line-height: 1.6;
-    overflow-wrap: break-word;
-    width: 700px;
-}
-
-.modal_edit_content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 10px;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.3s ease-out;
-}
-
-
-.update-dica-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.modal_edit label {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.modal_edit input,
-.modal_edit select,
-.modal_edit textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.modal_edit button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
 }
-
-.modal_edit button:hover {
-    background-color: #45a049;
-}
-
 
 @keyframes fadeIn {
     from {

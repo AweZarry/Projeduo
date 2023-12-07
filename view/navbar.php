@@ -17,14 +17,14 @@ $result = $db->query($query);
 $resultu = $db->query($queryu);
 
 
-if ($resultu->rowCount() > 0) {
-    while ($row = $resultu->fetch(PDO::FETCH_ASSOC)) {
+if($resultu->rowCount() > 0) {
+    while($row = $resultu->fetch(PDO::FETCH_ASSOC)) {
         $usuarios[] = $row;
     }
 }
 
-if ($result->rowCount() > 0) {
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+if($result->rowCount() > 0) {
+    while($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $jogos[] = $row;
     }
 }
@@ -146,6 +146,8 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
         .direita {
             float: right;
             max-height: 66.56px;
+            display: flex;
+            align-items: center;
         }
 
         .imgs_user {
@@ -162,6 +164,13 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
 
         #lado_dir {
             width: 160px;
+            position: absolute;
+        }
+
+        .foto_user img{
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
         }
     </style>
 </head>
@@ -179,7 +188,7 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
                 <li class="nav-item dropdown">
                     <span class="nav-link">Tópicos de Jogos</span>
                     <div class="dropdown-content" id="drop">
-                        <?php foreach ($jogos as $jogo): ?>
+                        <?php foreach($jogos as $jogo): ?>
                             <a class="dropdown-item" href="../view/visu.php?id_jogo=<?= $jogo["id_jogo"] ?>">
                                 <?php echo $jogo["nome_jogo"]; ?>
                             </a>
@@ -196,7 +205,7 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
         </div>
         <div class="direita">
             <ul>
-                <?php if (isset($_SESSION['nome'])): ?>
+                <?php if(isset($_SESSION['nome'])): ?>
                     <?php
                     $marcos = [];
 
@@ -207,8 +216,8 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
                     $querymarcos = "SELECT * FROM usuario WHERE id_usuario = '$marcola' ";
                     $resultm = $db->query($querymarcos);
 
-                    if ($resultm->rowCount() > 0) {
-                        while ($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
+                    if($resultm->rowCount() > 0) {
+                        while($row = $resultm->fetch(PDO::FETCH_ASSOC)) {
                             $marcos[] = $row;
                         }
                     }
@@ -218,9 +227,10 @@ $id_jogo = isset($_GET['id_jogo']) ? $_GET['id_jogo'] : "";
                             <span class="nav-link dropdown-toggle">Bem-vindo,
                                 <?php echo $marcos[0]['nome_usuario']; ?> !
                             </span>
+                            <span class="foto_user"><img src="<?php echo $marcos[0]['foto_usuario']; ?>" alt=""></span>
                         </div>
                         <div class="dropdown-content" id="lado_dir">
-                            <?php if ($_SESSION['adm']): ?>
+                            <?php if($_SESSION['adm']): ?>
                                 <a class="dropdown-item" href="../view/adm.php">Painel ADM</a>
                             <?php endif; ?>
                             <a class="dropdown-item" href="../view/editarp.php">Meu Perfil</a>
