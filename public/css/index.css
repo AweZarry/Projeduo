@@ -215,6 +215,11 @@ input[type="radio"]:checked+.slide {
     overflow: hidden;
 }
 
+a.desc {
+    display: flex;
+    height: 275px;
+}
+
 .comunidade-container {
     width: 1478px;
     height: 450;

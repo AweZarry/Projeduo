@@ -340,7 +340,8 @@ body {
     margin-right: 10px;
 }
 
-.conteudo {
+.conteudo,
+.conteudo-foto {
     background-color: #7e7e7e;
     margin-top: 10px;
     border-radius: 10px;
@@ -363,6 +364,7 @@ body {
 
 .assunto-captura {
     width: 300px;
+    height: 150px;
     display: flex;
     justify-content: center;
     background-color: #333;
@@ -372,6 +374,7 @@ body {
 
 .assunto-captura img {
     width: 280px;
+    height: 130px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -535,6 +538,8 @@ body {
     border: 1px solid red;
 }
 
+
+
 #fechar-modal-assunto-dica,
 .close_edit {
     position: absolute;
@@ -566,7 +571,8 @@ body {
 }
 
 /* Estilo dos ícones de ação */
-.modal-assunto-dica>div>div:first-child>div:last-child>a .modal-editar-dica>div>div:first-child>div:last-child>a {
+.modal-assunto-dica>div>div:first-child>div:last-child>a,
+.modal-editar-dica>div>div:first-child>div:last-child>a {
     margin-right: 10px;
 }
 
@@ -619,8 +625,12 @@ body {
 
 #modal-assunto-dica-content {
     line-height: 1.6;
-    overflow-wrap: break-word;
     width: 700px;
+    text-align: center;
+    word-wrap: break-word;
+    margin: 0 auto;
+    white-space: pre-line;
+    text-overflow: ellipsis;
 }
 
 .modal_edit_content {
@@ -670,6 +680,11 @@ body {
 
 .modal_edit button:hover {
     background-color: #45a049;
+}
+
+.modal-assunto-dica {
+    overflow-y: scroll;
+    max-height: 600px;
 }
 
 

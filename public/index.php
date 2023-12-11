@@ -393,7 +393,6 @@ include_once('../view/navbar.php')
     <script src="../public/js/telap/imgsjogos.js"></script>
     <script src="../public/js/telap/comuni.js"></script>
     <script src="../public/js/telap/select.js"></script>
-    <script src="../public/js/telap/view.js"></script>
 </body>
 
 </html>

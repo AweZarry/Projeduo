@@ -70,8 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Função para fechar o modal de edição
-    function closeModal() {
-        var editModal = document.getElementById('myModal');
-        editModal.style.display = 'none';
-    }
+    document.getElementById('clode_edit').addEventListener('click', function() {
+        document.getElementById('myModal').style.display = 'none';
+    });
 });
